@@ -47,9 +47,11 @@ fun HomeScreen(
         }
 
         is HomeUiState.Error -> {
-            Text(text = uiState.message, color = MaterialTheme.colorScheme.error)
-            Button(onClick = retryAction) {
-                Text(text = stringResource(R.string.retry))
+            Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+                Text(text = uiState.message, color = MaterialTheme.colorScheme.error)
+                Button(onClick = retryAction) {
+                    Text(text = stringResource(R.string.retry))
+                }
             }
         }
 
