@@ -2,7 +2,7 @@
 
 This repository contains the source code for a mini video player app built for Android using Kotlin, Compose, Hilt, Retrofit, and Media3 (ExoPlayer).
 
-[Download APK](./app/release/release.apk)
+[Download APK](./app-release.apk)
 
 ## **Project Goals:**
 
