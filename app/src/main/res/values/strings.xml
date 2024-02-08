@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Media</string>
-    <string name="bigbuckbunny_mp4">https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4</string>
+    <string name="app_name">Mini Media Player</string>
+    <string name="retry">Retry</string>
 </resources>
