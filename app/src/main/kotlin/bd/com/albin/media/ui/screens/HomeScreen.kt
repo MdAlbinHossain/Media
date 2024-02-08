@@ -68,10 +68,13 @@ fun HomeBody(
             MovieRow("Trending Now", movies = movies, onMovieClick = onMovieClick)
         }
         item {
-            MovieRow("Most Popular", movies = movies.shuffled(), onMovieClick = onMovieClick)
+            MovieRow("Most Popular", movies = movies.reversed(), onMovieClick = onMovieClick)
         }
         item {
-            MovieRow("Top Rated", movies = movies.shuffled(), onMovieClick = onMovieClick)
+            MovieRow("Top Rated", movies = movies, onMovieClick = onMovieClick)
+        }
+        item {
+            MovieRow("My List", movies = movies.reversed(), onMovieClick = onMovieClick)
         }
     }
 }

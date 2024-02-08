@@ -25,7 +25,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -82,13 +82,12 @@ dependencies {
     ksp(libs.hilt.ext.compiler)
 
     implementation(libs.kotlinx.serialization.json)
-    implementation(libs.kotlinx.coroutines.play.services)
 
     implementation(libs.coil.kt.compose)
 
     implementation (libs.androidx.media3.exoplayer)
     implementation (libs.androidx.media3.ui)
-
+    implementation (libs.androidx.media3.common)
 
     implementation(libs.retrofit.core)
     implementation(libs.retrofit.kotlin.serialization)

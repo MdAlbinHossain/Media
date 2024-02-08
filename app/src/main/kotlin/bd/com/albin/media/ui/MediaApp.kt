@@ -45,7 +45,7 @@ fun MediaApp(modifier: Modifier = Modifier) {
             }),
         ) {
             val viewModel: MediaPlayerViewModel = hiltViewModel()
-            MediaPlayerScreen(modifier = Modifier, viewModel.player)
+            MediaPlayerScreen(modifier = Modifier, viewModel.playBackState, viewModel.player)
         }
     }
 }

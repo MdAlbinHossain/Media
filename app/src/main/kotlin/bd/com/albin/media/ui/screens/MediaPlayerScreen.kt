@@ -1,13 +1,16 @@
 package bd.com.albin.media.ui.screens
 
 import androidx.annotation.OptIn
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
@@ -25,7 +28,9 @@ import bd.com.albin.media.ui.theme.MediaTheme
 @OptIn(UnstableApi::class)
 @Composable
 fun MediaPlayerScreen(
-    modifier: Modifier = Modifier, player: Player = ExoPlayer.Builder(LocalContext.current).build()
+    modifier: Modifier = Modifier,
+    playbackState: Int = 0,
+    player: Player = ExoPlayer.Builder(LocalContext.current).build()
 ) {
     var lifecycle by remember {
         mutableStateOf(Lifecycle.Event.ON_CREATE)
@@ -44,25 +49,30 @@ fun MediaPlayerScreen(
     }
 
 
-    AndroidView(factory = { context ->
-        PlayerView(context).also {
-            it.player = player
-        }
-    }, update = {
-        when (lifecycle) {
-            Lifecycle.Event.ON_PAUSE -> {
-                it.onPause()
-                it.player?.pause()
+    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        AndroidView(factory = { context ->
+            PlayerView(context).also {
+                it.player = player
             }
+        }, update = {
+            when (lifecycle) {
+                Lifecycle.Event.ON_PAUSE -> {
+                    it.onPause()
+                    it.player?.pause()
+                }
 
-            Lifecycle.Event.ON_RESUME -> {
-                it.onResume()
+                Lifecycle.Event.ON_RESUME -> {
+                    it.onResume()
+                }
+
+                else -> Unit
             }
-
-            else -> Unit
+        }, modifier = Modifier.fillMaxSize()
+        )
+        if (playbackState == ExoPlayer.STATE_BUFFERING) {
+            LinearProgressIndicator()
         }
-    }, modifier = modifier.fillMaxSize()
-    )
+    }
 }
 
 
