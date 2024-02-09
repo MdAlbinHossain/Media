@@ -25,7 +25,7 @@ This repository contains the source code for a mini video player app built for A
 
 ## **Requirements:**
 
-* Android Studio Version: **Jellyfish** (23.3+)
+* Android Studio: Latest Version
 * Minimum Sdk: 28 (Android 9.0; Pie)
 
 ## **Setup and Usage:**
