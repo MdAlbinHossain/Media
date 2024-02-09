@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import bd.com.albin.media.R
 import bd.com.albin.media.data.model.Movie
 import bd.com.albin.media.ui.theme.MediaTheme
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 
 @Composable
 fun HomeScreen(
@@ -47,7 +47,11 @@ fun HomeScreen(
         }
 
         is HomeUiState.Error -> {
-            Column(modifier = modifier.fillMaxSize(), verticalArrangement = Arrangement.Center) {
+            Column(
+                modifier = modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(text = uiState.message, color = MaterialTheme.colorScheme.error)
                 Button(onClick = retryAction) {
                     Text(text = stringResource(R.string.retry))
@@ -107,13 +111,16 @@ fun MovieRow(header: String = "Row Header", movies: List<Movie>, onMovieClick: (
 
 @Composable
 fun MovieItem(movie: Movie, onMovieClick: (String) -> Unit) {
-    AsyncImage(
+    SubcomposeAsyncImage(
         model = movie.thumb,
         contentDescription = movie.title,
         modifier = Modifier
             .size(height = 240.dp, width = 135.dp)
             .clip(RectangleShape)
             .clickable(onClick = { onMovieClick(movie.source) }),
+        loading = {
+            CircularProgressIndicator()
+        },
         contentScale = ContentScale.Crop
     )
 }
