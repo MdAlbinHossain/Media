@@ -48,7 +48,9 @@ fun HomeScreen(
 
         is HomeUiState.Error -> {
             Column(
-                modifier = modifier.fillMaxSize(),
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -119,7 +121,7 @@ fun MovieItem(movie: Movie, onMovieClick: (String) -> Unit) {
             .clip(RectangleShape)
             .clickable(onClick = { onMovieClick(movie.source) }),
         loading = {
-            Box(contentAlignment = Alignment.Center){
+            Box(contentAlignment = Alignment.Center) {
                 CircularProgressIndicator()
             }
         },

@@ -1,3 +1,5 @@
+![Thumbnail](./thumb.webp)
+
 # Mini Video Player App
 
 This repository contains the source code for a mini video player app built for Android using Kotlin, Compose, Hilt, Retrofit, and Media3 (ExoPlayer).

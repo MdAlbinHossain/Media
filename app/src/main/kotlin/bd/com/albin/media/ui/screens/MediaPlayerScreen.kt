@@ -53,6 +53,7 @@ fun MediaPlayerScreen(
         AndroidView(factory = { context ->
             PlayerView(context).also {
                 it.player = player
+                it.keepScreenOn = true
             }
         }, update = {
             when (lifecycle) {
