@@ -119,7 +119,9 @@ fun MovieItem(movie: Movie, onMovieClick: (String) -> Unit) {
             .clip(RectangleShape)
             .clickable(onClick = { onMovieClick(movie.source) }),
         loading = {
-            CircularProgressIndicator()
+            Box(contentAlignment = Alignment.Center){
+                CircularProgressIndicator()
+            }
         },
         contentScale = ContentScale.Crop
     )
